@@ -9,7 +9,7 @@ const AutocompleteSearchBox = () => {
       id="combo-box-demo"
       options={top100Films}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField error {...params} label="№ ордеру" />}
+      renderInput={(params) => <TextField {...params} label="№ ордеру" />}
     />
   );
 }
