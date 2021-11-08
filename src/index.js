@@ -1,3 +1,12 @@
+// These must be the first lines in src/index.js added support for old browsers
+import "react-app-polyfill/ie9";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+
+// Implement Redux
+import { Provider } from "react-redux";
+import { store } from "./redux/root.store";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -5,9 +14,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
