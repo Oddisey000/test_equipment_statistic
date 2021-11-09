@@ -14,7 +14,7 @@ const SelectEquipment = () => {
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth variant="filled">
+      <FormControl fullWidth variant="filled" sx={{ width: 145 }}>
         <InputLabel id="demo-simple-select-label">Обладнання</InputLabel>
         <Select
           labelId="demo-simple-select-label"

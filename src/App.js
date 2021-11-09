@@ -9,9 +9,7 @@ function App() {
     return (
         <div className="App">
             <Particles options={particlesOptions}/>
-            <header className="App-header">
-                <MainContainer />
-            </header>
+            <MainContainer />
         </div>
     );
 }

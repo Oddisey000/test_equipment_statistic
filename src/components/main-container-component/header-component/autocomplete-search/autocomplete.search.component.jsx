@@ -8,7 +8,7 @@ const AutocompleteSearchBox = () => {
       disablePortal
       id="combo-box-demo"
       options={top100Films}
-      sx={{ width: 300 }}
+      sx={{ width: 280 }}
       renderInput={(params) => <TextField {...params} label="№ ордеру" />}
     />
   );

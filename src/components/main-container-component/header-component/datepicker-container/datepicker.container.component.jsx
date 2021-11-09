@@ -11,7 +11,7 @@ import DatepickerComponent from "./datepicker-component/datepicker.component";
 
 const DatepickerContainer = () => {
   return (
-    <Accordion style={{backgroundColor: "transparent"}}>
+    <Accordion style={{backgroundColor: "transparent", marginTop: "1vh"}}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
