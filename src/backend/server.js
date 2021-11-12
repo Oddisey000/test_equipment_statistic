@@ -1,18 +1,21 @@
 const express = require('express');
 const sql = require('mssql/msnodesqlv8');
+const cors = require('cors')
 
 const app = express();
 const port = process.env.PORT || 3200;
 
 const config = {
-  user: process.env.DB_USER || 'test',
-  password: process.env.DB_PASSWORD || '1111',
-  server: process.env.DB_SERVER || "DESKTOP-SLJP4R8\\SQLEXPRESS",
+  user: process.env.DB_USER || 'statistic_user',
+  password: process.env.DB_PASSWORD || 'stat_usr_007',
+  server: process.env.DB_SERVER || "WSUA5178\\SQLEXPRESS",
   database: process.env.DB_DATABASE || 'testDB',
 }
 
+app.use(cors());
+
 app.get('/', (req, res) => {
-  const productQuery = `SELECT * FROM test`;
+  const productQuery = `SELECT * FROM workflow_statistic`;
   const request = new sql.Request();
   request.query(productQuery, (err, result) => {
      if (err) res.status(500).send(err);
