@@ -1,8 +1,11 @@
 import React from "react";
+import DataTableComponent from "./datatable-component/datatable.component";
 
 const BodyComponent = () => {
   return (
-    <div id="app-body"></div>
+    <div id="app-body">
+      <DataTableComponent />
+    </div>
   );
 };
 
