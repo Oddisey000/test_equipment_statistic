@@ -1,0 +1,13 @@
+.search_parameters {
+  display: flex;
+  justify-content: space-between;
+}
+#app-body {
+  display: inline-block;
+  padding-top: 2vh;
+  transform: translateY(35vh);
+}
+#datepicker_container {
+  display: flex;
+  margin-bottom: 3vh;
+}
