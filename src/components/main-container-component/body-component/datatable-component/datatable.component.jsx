@@ -40,6 +40,35 @@ const DataTableComponent = () => {
     onTableChange: (action, state) => {
       console.log(action);
       console.dir(state);
+    },
+    textLabels: {
+      body: {
+        noMatch: "Нажаль, відсутні дані для відображення",
+        toolTip: "Сортувати",
+        columnHeaderTooltip: column => `Сортувати за ${column.label}`
+      },
+      pagination: {
+        next: "Наступна сторінка",
+        previous: "Попередня сторінка",
+        rowsPerPage: "Кількість рядків:",
+        displayRows: "з",
+      },
+      toolbar: {
+        search: "Пошук",
+        downloadCsv: "Завантажити CSV",
+        print: "Друкувати",
+        viewColumns: "Перегляд колонок",
+        filterTable: "Фільтрувати таблицю",
+      },
+      filter: {
+        all: "Всі дані",
+        title: "Фільтри",
+        reset: "Скинути",
+      },
+      viewColumns: {
+        title: "Відобразити колонки",
+        titleAria: "Відобразити/Приховати колонки",
+      }
     }
   };
 

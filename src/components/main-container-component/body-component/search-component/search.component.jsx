@@ -1,21 +1,11 @@
 import * as React from 'react';
-import axios from "axios";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ToggleButton from '@mui/material/ToggleButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton } from '@mui/material';
-import BackspaceIcon from '@mui/icons-material/Backspace';
 
 import DataTableComponent from "../datatable-component/datatable.component";
 
 const baseURL = "http://localhost:3200/";
-
-const getDataFromDB = () => {
-  axios.get(baseURL).then((response) => {
-    console.log(response.data.recordset);
-  })
-};
-
 const SearchComponent = () => {
   const [state, setState] = React.useState({
     top: false,

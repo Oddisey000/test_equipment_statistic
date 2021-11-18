@@ -1,13 +1,13 @@
 import INITIAL_STATE from "../root.state";
-//import {} from "./app-reducer.types";
+import { GET_ORDER_NUMBERS } from "./app-reducer.types";
 
 const appReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    /*case CHANGE_APP_LANGUAGE:
+    case GET_ORDER_NUMBERS:
       return {
         ...state,
-        appLanguage: action.payload
-      };*/
+        ordersToSelect: action.payload
+      };
     default:
       return state;
   }
