@@ -1,5 +1,8 @@
 import INITIAL_STATE from "../root.state";
-import { GET_ORDER_NUMBERS } from "./app-reducer.types";
+import { 
+  GET_ORDER_NUMBERS,
+  GET_EQUIPMENT_LIST
+} from "./app-reducer.types";
 
 const appReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -8,6 +11,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
         ...state,
         ordersToSelect: action.payload
       };
+    case GET_EQUIPMENT_LIST:
+      return {
+        ...state,
+        testingEquipmentToSelect: action.payload
+      }
     default:
       return state;
   }

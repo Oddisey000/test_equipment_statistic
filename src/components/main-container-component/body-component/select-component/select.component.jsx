@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const SelectEquipment = () => {
+const SelectEquipment = ({appReducer}) => {
+  console.log(appReducer);
   const [equipment, setEquipment] = React.useState('');
 
   const handleChange = (event) => {
@@ -23,13 +25,17 @@ const SelectEquipment = () => {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+        <MenuItem value="1">1</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
 }
 
-export default SelectEquipment;
+const mapStateToProps = (state) => {
+  return {
+    appReducer: { ...state.appReducer }
+  };
+};
+
+export default connect(mapStateToProps)(SelectEquipment);

@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-import { getOrdersFromDB } from "../../../../redux/app-reducer/app-reducer.actions";
+import { getOrdersFromDB, getEquipmentList } from "../../../../redux/app-reducer/app-reducer.actions";
 
-const AutocompleteSearchBox = ({ appReducer, getOrdersFromDB }) => {
+const AutocompleteSearchBox = ({ appReducer, getOrdersFromDB, getEquipmentList }) => {
 
   const DisableDateInputs = (e) => {
     const groupToChange = document.getElementsByClassName("datepicker_input_block");
@@ -16,8 +16,15 @@ const AutocompleteSearchBox = ({ appReducer, getOrdersFromDB }) => {
     }
   }
 
+  const TestFunction = (e) => {
+    if (e.target.value) {
+      getEquipmentList(`${appReducer.API_url}getequipment?order=${e.target.value}`)
+    }
+  }
+
   return (
     <Autocomplete
+      onBlur={TestFunction}
       onChange={DisableDateInputs}
       disablePortal
       id="combo-box-demo"
@@ -36,7 +43,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getOrdersFromDB: dispatch(getOrdersFromDB())
+    getOrdersFromDB: dispatch(getOrdersFromDB()),
+    getEquipmentList: (request) => dispatch(getEquipmentList(request))
   };
 };
 

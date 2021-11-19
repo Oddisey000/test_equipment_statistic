@@ -9,7 +9,6 @@ import "./datepicker.component.scss";
 
 const DatepickerComponent = (data) => {
   const [value, setValue] = React.useState([null, null]);
-  console.log(data);
   return (
     <div className="datepicker_input_block">
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={ukLocale}>

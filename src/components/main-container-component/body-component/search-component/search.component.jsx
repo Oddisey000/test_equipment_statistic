@@ -3,6 +3,8 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ToggleButton from '@mui/material/ToggleButton';
 import SearchIcon from '@mui/icons-material/Search';
 
+import "./search.component.scss";
+
 import DataTableComponent from "../datatable-component/datatable.component";
 
 const SearchComponent = () => {
@@ -32,7 +34,7 @@ const SearchComponent = () => {
   );
 
   return (
-    <div>
+    <div id="search_icon_button">
       {['top'].map((anchor) => (
         <React.Fragment key={anchor}>
           <ToggleButton
