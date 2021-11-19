@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import DataTableComponent from "../datatable-component/datatable.component";
 
-const baseURL = "http://localhost:3200/";
 const SearchComponent = () => {
   const [state, setState] = React.useState({
     top: false,

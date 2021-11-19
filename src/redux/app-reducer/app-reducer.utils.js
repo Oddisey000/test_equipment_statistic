@@ -5,7 +5,7 @@ export const GetOrdersInfo = (request) => {
   axios.get(request.appReducer.API_url).then((response) => {
     response.data.recordset.map((data) => {
       dataArr.push(Object.values(data)[0]);
-      console.log(data)
+      return dataArr;
     })
   }).catch((error) => {
     // handle error

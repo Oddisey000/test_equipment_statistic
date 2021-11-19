@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { connect } from "react-redux";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -7,8 +7,18 @@ import { getOrdersFromDB } from "../../../../redux/app-reducer/app-reducer.actio
 
 const AutocompleteSearchBox = ({ appReducer, getOrdersFromDB }) => {
 
+  const DisableDateInputs = (e) => {
+    const groupToChange = document.getElementsByClassName("datepicker_input_block");
+    let condition;
+    e.target.innerText ? condition = "none" : condition = "block";
+    for (var i = 0; i < groupToChange.length; i++) {
+      groupToChange[i].style.display = condition;
+    }
+  }
+
   return (
     <Autocomplete
+      onChange={DisableDateInputs}
       disablePortal
       id="combo-box-demo"
       options={appReducer.ordersToSelect}
@@ -17,9 +27,6 @@ const AutocompleteSearchBox = ({ appReducer, getOrdersFromDB }) => {
     />
   );
 }
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = ['The Shawshank Redemption', 'The Godfather','The Godfather: Part II'];
 
 const mapStateToProps = (state) => {
   return {

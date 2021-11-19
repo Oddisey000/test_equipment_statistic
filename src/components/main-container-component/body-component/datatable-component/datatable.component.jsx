@@ -1,18 +1,9 @@
 import MUIDataTable from "mui-datatables";
-import React, { useState } from "react";
+import React  from "react";
 import { ThemeProvider } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
 
 const DataTableComponent = () => {
-  const [responsive, setResponsive] = useState("vertical");
-  const [tableBodyHeight, setTableBodyHeight] = useState("");
-  const [tableBodyMaxHeight, setTableBodyMaxHeight] = useState("");
-  const [searchBtn, setSearchBtn] = useState(true);
-  const [downloadBtn, setDownloadBtn] = useState(true);
-  const [printBtn, setPrintBtn] = useState(true);
-  const [viewColumnBtn, setViewColumnBtn] = useState(true);
-  const [filterBtn, setFilterBtn] = useState(true);
-
   const columns = [
     { 
       name: "Name", 
@@ -27,15 +18,15 @@ const DataTableComponent = () => {
   ];
 
   const options = {
-    search: searchBtn,
-    download: downloadBtn,
-    print: printBtn,
-    viewColumns: viewColumnBtn,
-    filter: filterBtn,
+    search: true,
+    download: true,
+    print: true,
+    viewColumns: true,
+    filter: true,
     filterType: "dropdown",
-    responsive,
-    tableBodyHeight,
-    tableBodyMaxHeight,
+    responsive: "standard",
+    tableBodyHeight: "75vh",
+    tableBodyMaxHeight: "",
     selectableRows: false,
     onTableChange: (action, state) => {
       console.log(action);

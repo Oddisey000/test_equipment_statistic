@@ -11,9 +11,9 @@ const config = {
   server: process.env.DB_SERVER || "WSUA5178\\SQLEXPRESS",
   database: process.env.DB_DATABASE || 'testDB',*/
 
-  user: process.env.DB_USER || 'statistic_user',
-  password: process.env.DB_PASSWORD || 'stat_usr_007',
-  server: process.env.DB_SERVER || "WSUA5178\\SQLEXPRESS",
+  user: process.env.DB_USER || 'test',
+  password: process.env.DB_PASSWORD || '1111',
+  server: process.env.DB_SERVER || "DESKTOP-SLJP4R8\\SQLEXPRESS",
   database: process.env.DB_DATABASE || 'testDB',
 }
 
