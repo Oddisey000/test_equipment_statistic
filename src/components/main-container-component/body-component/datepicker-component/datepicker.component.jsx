@@ -9,12 +9,16 @@ import "./datepicker.component.scss";
 
 const DatepickerComponent = (data) => {
   const DisableOrderInput = (newValue) => {
-    const elementToChange = document.getElementById("combo-box-demo").parentElement.parentElement;
+    const elementToChange = document.getElementById("combo-box-demo").parentElement.parentElement.parentElement;
+    const datePickerElOne = document.getElementById("start_date")
+    const datePickerElTwo = document.getElementById("end_date")
 
     if (newValue) {
       elementToChange.style.display = "none"
     } else {
-      elementToChange.style.display = "flex"
+      if (!datePickerElOne.value && !datePickerElTwo.value) {
+        elementToChange.style.display = "flex"
+      }
     }
     setValue(newValue);
   }
@@ -28,6 +32,7 @@ const DatepickerComponent = (data) => {
             label={data.name}
             value={value}
             onChange={DisableOrderInput}
+            clearable={true}
             renderInput={(params) => <TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} />}
           />
       </LocalizationProvider>
