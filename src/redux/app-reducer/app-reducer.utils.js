@@ -27,3 +27,8 @@ export const GetEquipmentInfo = (request) => {
   })
   return dataArr;
 }
+
+export const ResetEquipmentInfo = () => {
+  let dataArr = [];
+  return dataArr;
+}

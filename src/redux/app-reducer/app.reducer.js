@@ -1,7 +1,8 @@
 import INITIAL_STATE from "../root.state";
 import { 
   GET_ORDER_NUMBERS,
-  GET_EQUIPMENT_LIST
+  GET_EQUIPMENT_LIST,
+  RESET_EQUIPMENT_LIST
 } from "./app-reducer.types";
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -12,6 +13,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
         ordersToSelect: action.payload
       };
     case GET_EQUIPMENT_LIST:
+      return {
+        ...state,
+        testingEquipmentToSelect: action.payload
+      }
+    case RESET_EQUIPMENT_LIST:
       return {
         ...state,
         testingEquipmentToSelect: action.payload

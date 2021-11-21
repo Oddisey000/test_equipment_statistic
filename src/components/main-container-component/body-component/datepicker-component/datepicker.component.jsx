@@ -8,6 +8,17 @@ import DatePicker from '@mui/lab/DatePicker';
 import "./datepicker.component.scss";
 
 const DatepickerComponent = (data) => {
+  const DisableOrderInput = (newValue) => {
+    const elementToChange = document.getElementById("combo-box-demo").parentElement.parentElement;
+
+    if (newValue) {
+      elementToChange.style.display = "none"
+    } else {
+      elementToChange.style.display = "flex"
+    }
+    setValue(newValue);
+  }
+
   const [value, setValue] = React.useState([null, null]);
   return (
     <div className="datepicker_input_block">
@@ -16,7 +27,7 @@ const DatepickerComponent = (data) => {
             mask="__.__.____"
             label={data.name}
             value={value}
-            onChange={(newValue) => setValue(newValue)}
+            onChange={DisableOrderInput}
             renderInput={(params) => <TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} />}
           />
       </LocalizationProvider>
