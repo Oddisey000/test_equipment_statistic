@@ -26,7 +26,7 @@ const SelectEquipment = ({appReducer}) => {
         <InputLabel id="demo-simple-select-label">Обладнання</InputLabel>
         <Select
           labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          id="equipment-simple-select"
           value={equipment}
           label="Age"
           onChange={handleChange}

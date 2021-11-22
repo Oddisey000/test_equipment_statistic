@@ -6,15 +6,15 @@ const app = express();
 const port = process.env.PORT || 3200;
 
 const config = {
-  /*user: process.env.DB_USER || 'statistic_user',
+  user: process.env.DB_USER || 'statistic_user',
   password: process.env.DB_PASSWORD || 'stat_usr_007',
   server: process.env.DB_SERVER || "WSUA5178\\SQLEXPRESS",
-  database: process.env.DB_DATABASE || 'testDB'*/
+  database: process.env.DB_DATABASE || 'testDB'
 
-  user: process.env.DB_USER || 'test',
+  /*user: process.env.DB_USER || 'test',
   password: process.env.DB_PASSWORD || '1111',
   server: process.env.DB_SERVER || "DESKTOP-SLJP4R8\\SQLEXPRESS",
-  database: process.env.DB_DATABASE || 'testDB'
+  database: process.env.DB_DATABASE || 'testDB'*/
 }
 
 app.use(cors());
@@ -42,7 +42,7 @@ app.get('/order', (req, res) => {
   });
 });
 
-app.get('/timeline', (req, res) => {
+app.get('/requestdata', (req, res) => {
   const reqParams = {
     orderID: req.query.order,
     equipmentID: req.query.equipment,
@@ -50,9 +50,18 @@ app.get('/timeline', (req, res) => {
     endDate: req.query.endDate,
   };
 
-  const productQuery = `SELECT DISTINCT drawing_number FROM workflow_statistic WHERE drawing_number LIKE '%MBR'`;
+  let query = "";
+
+  if (reqParams.orderID) {
+    if (reqParams.orderID && reqParams.equipmentID.length > 2) {
+      query = `SELECT * FROM workflow_statistic WHERE drawing_number = '${reqParams.orderID}' AND system_id = '${reqParams.equipmentID}'`;
+    } else {
+      query = `SELECT * FROM workflow_statistic WHERE drawing_number LIKE '${reqParams.orderID}%'`;
+    }
+  }
+
   const request = new sql.Request();
-  request.query(productQuery, (err, result) => {
+  request.query(query, (err, result) => {
      if (err) res.status(500).send(err);
      res.send(result);
   });

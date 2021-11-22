@@ -3,13 +3,15 @@ import {store} from '../root.store';
 import { 
   GET_ORDER_NUMBERS,
   GET_EQUIPMENT_LIST,
-  RESET_EQUIPMENT_LIST
+  RESET_EQUIPMENT_LIST,
+  GET_DATA_FROM_DB
 } from "./app-reducer.types";
 
 import { 
   GetOrdersInfo,
   GetEquipmentInfo,
-  ResetEquipmentInfo
+  ResetEquipmentInfo,
+  GetDataFromDB
 } from "./app-reducer.utils";
 
 export const getOrdersFromDB = () => ({
@@ -25,4 +27,9 @@ export const getEquipmentList = (request) => ({
 export const resetEquipmentList = () => ({
   type: RESET_EQUIPMENT_LIST,
   payload: ResetEquipmentInfo()
+});
+
+export const getDataFromDB = (request) => ({
+  type: GET_DATA_FROM_DB,
+  payload: GetDataFromDB(request)
 });

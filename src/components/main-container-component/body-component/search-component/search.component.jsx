@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { connect } from "react-redux";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ToggleButton from '@mui/material/ToggleButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,7 +8,10 @@ import "./search.component.scss";
 
 import DataTableComponent from "../datatable-component/datatable.component";
 
-const SearchComponent = () => {
+import { getDataFromDB } from "../../../../redux/app-reducer/app-reducer.actions";
+
+const SearchComponent = ({ appReducer, getDataFromDB }) => {
+  console.log(appReducer)
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -27,6 +31,19 @@ const SearchComponent = () => {
     setState({ ...state, [anchor]: open });
   };
 
+  const TestFunction = () => {
+    const orderInfo = document.getElementById("combo-box-demo").value;
+    const equipmentInfo = document.getElementById("equipment-simple-select").innerText;
+
+    if (orderInfo) {
+      if (orderInfo && equipmentInfo.length > 2) {
+        getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=${equipmentInfo}`)
+      } else {
+        getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=''`)
+      }
+    }
+  }
+
   const list = (anchor) => (
     <div>
       <DataTableComponent />
@@ -39,7 +56,7 @@ const SearchComponent = () => {
         <React.Fragment key={anchor}>
           <ToggleButton
             value="Пошук"
-            onClick={toggleDrawer(anchor, true)}
+            onClick={/*toggleDrawer(anchor, true)*/ TestFunction}
           >
             <SearchIcon />
           </ToggleButton>
@@ -57,4 +74,16 @@ const SearchComponent = () => {
   );
 }
 
-export default SearchComponent;
+const mapStateToProps = (state) => {
+  return {
+    appReducer: { ...state.appReducer }
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDataFromDB: (request) => dispatch(getDataFromDB(request))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchComponent);
