@@ -34,15 +34,16 @@ export const ResetEquipmentInfo = () => {
 }
 
 export const GetDataFromDB = (request) => {
-  let dataArr = [];
-  axios.get(request).then((response) => {
-      dataArr = response.data.recordset
-      return dataArr;
+  let dataArr = []
+
+  const SendData = (request) => axios.get(request).then((response) => {
+    response.data.recordset.map((data) => {
+      return dataArr.push(data)
+    })
   }).catch((error) => {
-    // handle error
     console.log(error);
   })
-  setTimeout(() => {
-    return dataArr
-  }, 1000);
+
+  SendData(request)
+  return dataArr
 }
