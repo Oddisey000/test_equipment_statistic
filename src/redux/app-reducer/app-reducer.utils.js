@@ -34,12 +34,25 @@ export const ResetEquipmentInfo = () => {
 }
 
 export const GetDataFromDB = (request) => {
-  let dataArr = []
+  let dataArr = [];
+  let extractRecordset = [];
 
   const SendData = (request) => axios.get(request).then((response) => {
+    const objQuantity = Object.keys(response.data.recordset[0]).length
+    const objKeys = Object.keys(response.data.recordset[0])
+    dataArr.push(objKeys)
+
     response.data.recordset.map((data) => {
-      return dataArr.push(data)
+      return extractRecordset.push(data)
     })
+
+    let result = [];
+
+    for (var i = 0; i < objQuantity; i++) {
+      let objKey = objKeys[i];
+      result = extractRecordset.map(a => a[objKey]);
+      dataArr.push(result)
+    }
   }).catch((error) => {
     console.log(error);
   })
