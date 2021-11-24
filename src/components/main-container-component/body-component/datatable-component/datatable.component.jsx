@@ -1,26 +1,16 @@
 import MUIDataTable from "mui-datatables";
 import React  from "react";
+import { connect } from "react-redux";
 import { ThemeProvider } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
 
-const DataTableComponent = () => {
-  const columns = [
-    { 
-      name: "Name", 
-      options: { 
-        filterOptions: { 
-          fullWidth: true 
-        } 
-      } 
-    },
-    "Title",
-    "Location"
-  ];
+const DataTableComponent = ({appReducer}) => {
+  const columns = appReducer.tableRecordset[0]
 
   const options = {
     search: true,
     download: true,
-    print: true,
+    print: false,
     viewColumns: true,
     filter: true,
     filterType: "dropdown",
@@ -28,6 +18,7 @@ const DataTableComponent = () => {
     tableBodyHeight: "75vh",
     tableBodyMaxHeight: "",
     selectableRows: false,
+    //rowsPerPageOptions: [10, 50, 100, 500],
     onTableChange: (action, state) => {
       console.log(action);
       console.dir(state);
@@ -63,24 +54,7 @@ const DataTableComponent = () => {
     }
   };
 
-  const data = [
-    ["Gabby George", "Business Analyst", "Minneapolis"],
-    [
-      "Aiden Lloyd",
-      "Business Consultant for an International Company and CEO of Tony's Burger Palace",
-      "Dallas"
-    ],
-    ["Jaden Collins", "Attorney", "Santa Ana"],
-    ["Franky Rees", "Business Analyst", "St. Petersburg"],
-    ["Aaren Rose", null, "Toledo"],
-    ["Johnny Jones", "Business Analyst", "St. Petersburg"],
-    ["Jimmy Johns", "Business Analyst", "Baltimore"],
-    ["Jack Jackson", "Business Analyst", "El Paso"],
-    ["Joe Jones", "Computer Programmer", "El Paso"],
-    ["Jacky Jackson", "Business Consultant", "Baltimore"],
-    ["Jo Jo", "Software Developer", "Washington DC"],
-    ["Donna Marie", "Business Manager", "Annapolis"]
-  ];
+  const data = appReducer.tableRecordset.slice(1).map(data => data);
 
   return (
     <ThemeProvider theme={createTheme()}>
@@ -94,4 +68,10 @@ const DataTableComponent = () => {
   );
 }
 
-export default DataTableComponent;
+const mapStateToProps = (state) => {
+  return {
+    appReducer: { ...state.appReducer }
+  };
+};
+
+export default connect(mapStateToProps)(DataTableComponent);

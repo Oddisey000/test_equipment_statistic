@@ -48,11 +48,11 @@ export const GetDataFromDB = (request) => {
 
     let result = [];
 
-    for (var i = 0; i < objQuantity; i++) {
-      let objKey = objKeys[i];
-      result = extractRecordset.map(a => a[objKey]);
+    for (var i = 0; i < response.data.recordset.length; i++) {
+      result = Object.values(extractRecordset[i])
       dataArr.push(result)
     }
+    
   }).catch((error) => {
     console.log(error);
   })

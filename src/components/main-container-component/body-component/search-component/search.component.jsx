@@ -31,7 +31,7 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
     setState({ ...state, [anchor]: open });
   };
 
-  const TestFunction = () => {
+  const PrepareDataForTable = () => {
     const orderInfo = document.getElementById("combo-box-demo").value;
     const equipmentInfo = document.getElementById("equipment-simple-select").innerText;
 
@@ -56,7 +56,8 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
         <React.Fragment key={anchor}>
           <ToggleButton
             value="Пошук"
-            onClick={/*toggleDrawer(anchor, true)*/ TestFunction}
+            onClick={toggleDrawer(anchor, true)}
+            onFocus={PrepareDataForTable}
           >
             <SearchIcon />
           </ToggleButton>
