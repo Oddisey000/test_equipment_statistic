@@ -29,14 +29,14 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
     PrepareDataForTable()
     setTimeout(() => {
       setState({ ...state, [anchor]: open });
-    }, 100);
+    }, 200);
   };
 
   const PrepareDataForTable = () => {
     const orderInfo = document.getElementById("combo-box-demo").value;
     const equipmentInfo = document.getElementById("equipment-simple-select").innerText;
-    const startDate = document.getElementById("start_date").value
-    const endDate = document.getElementById("end_date").value
+    let startDate = document.getElementById("start_date").value
+    let endDate = document.getElementById("end_date").value
 
     if (orderInfo) {
       if (orderInfo && equipmentInfo.length > 2) {
@@ -48,7 +48,13 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
 
     if (startDate && endDate) {
       if (equipmentInfo.length > 2) {
-        
+        startDate = `${startDate.substring(startDate.length - 4, startDate.length)}/${startDate.substring(3, 5)}/${startDate.substring(0, 2)}`
+        endDate = `${endDate.substring(endDate.length - 4, endDate.length)}/${endDate.substring(3, 5)}/${endDate.substring(0, 2)}`
+        getDataFromDB(`${appReducer.API_url}requestdata?startdate=${startDate}&enddate=${endDate}&equipment=${equipmentInfo}`)
+      } else {
+        startDate = `${startDate.substring(startDate.length - 4, startDate.length)}/${startDate.substring(3, 5)}/${startDate.substring(0, 2)}`
+        endDate = `${endDate.substring(endDate.length - 4, endDate.length)}/${endDate.substring(3, 5)}/${endDate.substring(0, 2)}`
+        getDataFromDB(`${appReducer.API_url}requestdata?startdate=${startDate}&enddate=${endDate}&equipment`)
       }
     }
   }

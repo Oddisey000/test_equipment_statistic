@@ -47,7 +47,7 @@ app.get('/requestdata', (req, res) => {
     orderID: req.query.order,
     equipmentID: req.query.equipment,
     startDate: req.query.startdate,
-    endDate: req.query.endDate,
+    endDate: req.query.enddate,
   };
 
   let query = "";
@@ -57,6 +57,14 @@ app.get('/requestdata', (req, res) => {
       query = `SELECT * FROM workflow_statistic WHERE drawing_number = '${reqParams.orderID}' AND system_id = '${reqParams.equipmentID}'`;
     } else {
       query = `SELECT * FROM workflow_statistic WHERE drawing_number LIKE '${reqParams.orderID}%'`;
+    }
+  }
+
+  if (reqParams.startDate && reqParams.endDate) {
+    if (reqParams.equipmentID.length > 2) {
+      query = `SELECT * FROM workflow_statistic WHERE time >= '${reqParams.startDate}' AND time < '${reqParams.endDate} 23:59:59.999' AND system_id = '${reqParams.equipmentID}'`;
+    } else {
+      query = `SELECT * FROM workflow_statistic WHERE time >= '${reqParams.startDate}' AND time < '${reqParams.endDate} 23:59:59.999'`;
     }
   }
 
