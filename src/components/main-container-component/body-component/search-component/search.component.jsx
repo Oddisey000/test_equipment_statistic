@@ -27,8 +27,10 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
     ) {
       return;
     }
-
-    setState({ ...state, [anchor]: open });
+    PrepareDataForTable()
+    setTimeout(() => {
+      setState({ ...state, [anchor]: open });
+    }, 100);
   };
 
   const PrepareDataForTable = () => {
@@ -46,7 +48,7 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
 
   const list = (anchor) => (
     <div>
-      <DataTableComponent />
+      <DataTableComponent {...appReducer} />
     </div>
   );
 
@@ -57,7 +59,7 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
           <ToggleButton
             value="Пошук"
             onClick={toggleDrawer(anchor, true)}
-            onFocus={PrepareDataForTable}
+            //onFocus={PrepareDataForTable}
           >
             <SearchIcon />
           </ToggleButton>

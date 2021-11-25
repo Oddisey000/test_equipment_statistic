@@ -40,7 +40,7 @@ export const GetDataFromDB = (request) => {
   const SendData = (request) => axios.get(request).then((response) => {
     const objQuantity = Object.keys(response.data.recordset[0]).length
     const objKeys = Object.keys(response.data.recordset[0])
-    dataArr.push(objKeys)
+    dataArr.push(objKeys.slice(1))
 
     response.data.recordset.map((data) => {
       return extractRecordset.push(data)
@@ -50,7 +50,7 @@ export const GetDataFromDB = (request) => {
 
     for (var i = 0; i < response.data.recordset.length; i++) {
       result = Object.values(extractRecordset[i])
-      dataArr.push(result)
+      dataArr.push(result.slice(1))
     }
     
   }).catch((error) => {
