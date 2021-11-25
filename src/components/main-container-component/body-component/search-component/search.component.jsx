@@ -11,7 +11,6 @@ import DataTableComponent from "../datatable-component/datatable.component";
 import { getDataFromDB } from "../../../../redux/app-reducer/app-reducer.actions";
 
 const SearchComponent = ({ appReducer, getDataFromDB }) => {
-  console.log(appReducer)
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -36,12 +35,20 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
   const PrepareDataForTable = () => {
     const orderInfo = document.getElementById("combo-box-demo").value;
     const equipmentInfo = document.getElementById("equipment-simple-select").innerText;
+    const startDate = document.getElementById("start_date").value
+    const endDate = document.getElementById("end_date").value
 
     if (orderInfo) {
       if (orderInfo && equipmentInfo.length > 2) {
         getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=${equipmentInfo}`)
       } else {
         getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=''`)
+      }
+    }
+
+    if (startDate && endDate) {
+      if (equipmentInfo.length > 2) {
+        
       }
     }
   }

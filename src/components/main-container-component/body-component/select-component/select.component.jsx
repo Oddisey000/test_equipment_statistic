@@ -18,8 +18,6 @@ const SelectEquipment = ({appReducer}) => {
   const handleChange = (event) => {
     setEquipment(event.target.value);
   };
-  console.log(appReducer.testingEquipmentToSelect);
-
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth variant="filled" sx={{ width: 145 }}>

@@ -72,11 +72,13 @@ app.get('/getequipment', (req, res) => {
   const reqParams = {
     orderID: req.query.order,
     startDate: req.query.startdate,
-    endDate: req.query.endDate,
+    endDate: req.query.enddate,
   };
 
   if (reqParams.orderID) {
     query = `SELECT DISTINCT system_id FROM workflow_statistic WHERE drawing_number = '${reqParams.orderID}'`;
+  } else if (reqParams.startDate && reqParams.endDate) {
+    query = `SELECT DISTINCT system_id FROM workflow_statistic WHERE time >= '${reqParams.startDate}' AND time < '${reqParams.endDate} 23:59:59.999'`
   }
 
   const request = new sql.Request();
