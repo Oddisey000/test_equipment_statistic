@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import IconButton from "@material-ui/core/IconButton";
+import Close from "@material-ui/icons/Close";
 
 import "./datepicker.component.scss";
 
@@ -24,6 +26,7 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
       }
     }
     setValue(newValue);
+    ClearButton()
     setTimeout(() => {
       if (datePickerElOne.value.length === 10 && datePickerElTwo.value.length === 10) {
         CollectEquipmentInfo(datePickerElOne.value, datePickerElTwo.value)
@@ -38,6 +41,10 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
   }
 
   const [value, setValue] = React.useState([null, null]);
+  
+  const ClearButton = () => {
+    
+  }
   return (
     <div className="datepicker_input_block">
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={ukLocale}>
@@ -46,8 +53,7 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
             label={data.name}
             value={value}
             onChange={DisableOrderInput}
-            clearable={true}
-            renderInput={(params) => <TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} />}
+            renderInput={(params) => <div><TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} /><IconButton id={`${data.id}_close_btn`}><Close /></IconButton></div>}
           />
       </LocalizationProvider>
     </div>
