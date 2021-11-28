@@ -1,16 +1,23 @@
 import MUIDataTable from "mui-datatables";
-import React  from "react";
+import React, {useState}  from "react";
 import { ThemeProvider } from "@mui/styles";
 import { createTheme } from "@mui/material/styles";
 
 const DataTableComponent = ({ ...appReducer }) => {
+  const [value, setValue] = useState(0);
   const columnsArr = [];
   const columnsToDisplay = [0,1,2,6,8,11,13,15,18,19,20,21];
   let columnsData = [];
   let data = [];
+
+  const checkData = setInterval(() => {
+    if (appReducer.tableRecordset[0]) {
+      clearInterval(checkData)
+      setValue(1)
+    }
+  }, 200);
   
   if (appReducer.tableRecordset[0]) {
-    console.log(appReducer.tableRecordset[0])
     columnsData = appReducer.tableRecordset[0];
     data = appReducer.tableRecordset.slice(1).map(data => data);
 
@@ -43,10 +50,7 @@ const DataTableComponent = ({ ...appReducer }) => {
     tableBodyMaxHeight: "",
     selectableRows: false,
     //rowsPerPageOptions: [10, 50, 100, 500],
-    onTableChange: (action, state) => {
-      console.log(action);
-      console.dir(state);
-    },
+    //onTableChange: (action, state) => {},
     textLabels: {
       body: {
         noMatch: "Опрацювання даних",
@@ -80,19 +84,12 @@ const DataTableComponent = ({ ...appReducer }) => {
 
   return (
     <ThemeProvider theme={createTheme()}>
-      {appReducer.tableRecordset[0]
-        ? (
-          <MUIDataTable
-            title={"ACME Employee list"}
-            data={data}
-            columns={columns}
-            options={options}
-          />
-        )
-        : (
-          <MUIDataTable />
-        )}
-      
+      <MUIDataTable
+        title={"ACME Employee list"}
+        data={data}
+        columns={columns}
+        options={options}
+      />
     </ThemeProvider>
   );
 }

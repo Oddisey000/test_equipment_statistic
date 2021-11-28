@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -10,13 +10,7 @@ import DataTableComponent from "../datatable-component/datatable.component";
 
 import { getDataFromDB } from "../../../../redux/app-reducer/app-reducer.actions";
 
-function useForceUpdate(){
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue(value => value + 1); // update the state to force render
-}
-
 const SearchComponent = ({ appReducer, getDataFromDB }) => {
-  const forceUpdate = useForceUpdate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -33,9 +27,6 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
       return;
     }
     PrepareDataForTable()
-    setTimeout(() => {
-      forceUpdate()
-    }, 9000);
     setState({ ...state, [anchor]: open })
   };
 

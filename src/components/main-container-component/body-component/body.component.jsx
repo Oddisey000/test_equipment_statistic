@@ -6,8 +6,6 @@ import AutocompleteSearchBox from "./autocomplete-search/autocomplete.search.com
 import DatepickerComponent from "./datepicker-component/datepicker.component";
 import SelectEquipment from "./select-component/select.component";
 import SearchComponent from "./search-component/search.component";
-import IconButton from "@material-ui/core/IconButton";
-import Close from "@material-ui/icons/Close";
 
 const BodyComponent = () => {
   const datepickerParams = {

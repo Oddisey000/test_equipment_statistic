@@ -38,7 +38,6 @@ export const GetDataFromDB = (request) => {
   let extractRecordset = [];
 
   const SendData = (request) => axios.get(request).then((response) => {
-    const objQuantity = Object.keys(response.data.recordset[0]).length
     const objKeys = Object.keys(response.data.recordset[0])
     dataArr.push(objKeys.slice(1))
 

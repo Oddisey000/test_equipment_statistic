@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import ukLocale from 'date-fns/locale/uk';
 import TextField from '@mui/material/TextField';
@@ -25,13 +25,16 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
         elementToChange.style.display = "flex"
       }
     }
+
     setValue(newValue);
-    ClearButton()
     setTimeout(() => {
+      document.getElementById(data.id).value 
+          ? document.getElementById(`${data.id}_close_btn`).style.display = "inline" 
+          : document.getElementById(`${data.id}_close_btn`).style.display = "none"
       if (datePickerElOne.value.length === 10 && datePickerElTwo.value.length === 10) {
         CollectEquipmentInfo(datePickerElOne.value, datePickerElTwo.value)
       }
-    }, 100);
+    }, 400);
   }
 
   const CollectEquipmentInfo = (startDate, endDate) => {
@@ -43,7 +46,8 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
   const [value, setValue] = React.useState([null, null]);
   
   const ClearButton = () => {
-    
+    document.getElementById(data.id).value = null
+    DisableOrderInput(null)
   }
   return (
     <div className="datepicker_input_block">
@@ -53,7 +57,7 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
             label={data.name}
             value={value}
             onChange={DisableOrderInput}
-            renderInput={(params) => <div><TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} /><IconButton id={`${data.id}_close_btn`}><Close /></IconButton></div>}
+            renderInput={(params) => <div><TextField id={data.id} {...params} inputProps={{...params.inputProps, placeholder: "дд.мм.рррр"}} /><IconButton onClick={ClearButton} style={{display: "none"}} id={`${data.id}_close_btn`}><Close /></IconButton></div>}
           />
       </LocalizationProvider>
     </div>
