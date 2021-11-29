@@ -40,7 +40,7 @@ const SearchComponent = ({ appReducer, getDataFromDB }) => {
       if (orderInfo && equipmentInfo.length > 2) {
         getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=${equipmentInfo}`)
       } else {
-        getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=''`)
+        getDataFromDB(`${appReducer.API_url}requestdata?order=${orderInfo}&equipment=`)
       }
     }
 

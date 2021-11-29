@@ -54,7 +54,7 @@ app.get('/requestdata', (req, res) => {
 
   if (reqParams.orderID) {
     if (reqParams.orderID && reqParams.equipmentID.length > 2) {
-      query = `SELECT * FROM workflow_statistic WHERE drawing_number = '${reqParams.orderID}' AND system_id = '${reqParams.equipmentID}'`;
+      query = `SELECT * FROM workflow_statistic WHERE drawing_number LIKE '${reqParams.orderID}%' AND system_id = '${reqParams.equipmentID}'`;
     } else {
       query = `SELECT * FROM workflow_statistic WHERE drawing_number LIKE '${reqParams.orderID}%'`;
     }
@@ -84,7 +84,7 @@ app.get('/getequipment', (req, res) => {
   };
 
   if (reqParams.orderID) {
-    query = `SELECT DISTINCT system_id FROM workflow_statistic WHERE drawing_number = '${reqParams.orderID}'`;
+    query = `SELECT DISTINCT system_id FROM workflow_statistic WHERE drawing_number LIKE '${reqParams.orderID}%'`;
   } else if (reqParams.startDate && reqParams.endDate) {
     query = `SELECT DISTINCT system_id FROM workflow_statistic WHERE time >= '${reqParams.startDate}' AND time < '${reqParams.endDate} 23:59:59.999'`
   }

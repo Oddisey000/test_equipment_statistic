@@ -35,7 +35,7 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer, resetEquipment
       if (datePickerElOne.value.length === 10 && datePickerElTwo.value.length === 10) {
         CollectEquipmentInfo(datePickerElOne.value, datePickerElTwo.value)
       }
-    }, 400);
+    }, 100);
   }
 
   const CollectEquipmentInfo = (startDate, endDate) => {

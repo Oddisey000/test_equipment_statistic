@@ -15,7 +15,7 @@ const DataTableComponent = ({ ...appReducer }) => {
       clearInterval(checkData)
       setValue(1)
     }
-  }, 200);
+  }, 1000);
   
   if (appReducer.tableRecordset[0]) {
     columnsData = appReducer.tableRecordset[0];
