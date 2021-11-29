@@ -6,15 +6,15 @@ const app = express();
 const port = process.env.PORT || 3200;
 
 const config = {
+  user: process.env.DB_USER || 'statistic_user',
+  password: process.env.DB_PASSWORD || 'stat_usr_007',
+  server: process.env.DB_SERVER || "SVUA5PJ05.LEONI.LOCAL",
+  database: process.env.DB_DATABASE || 'BR206'
+
   /*user: process.env.DB_USER || 'statistic_user',
   password: process.env.DB_PASSWORD || 'stat_usr_007',
-  server: process.env.DB_SERVER || "SVUA5PJ05",
-  database: process.env.DB_DATABASE || 'BR206'*/
-
-  user: process.env.DB_USER || 'test',
-  password: process.env.DB_PASSWORD || '1111',
-  server: process.env.DB_SERVER || "DESKTOP-SLJP4R8\\SQLEXPRESS",
-  database: process.env.DB_DATABASE || 'testDB'
+  database: process.env.DB_DATABASE || 'testDB',
+  server: process.env.DB_SERVER || "WSUA5178\\SQLEXPRESS"*/
 }
 
 app.use(cors());

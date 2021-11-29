@@ -15,7 +15,6 @@
     "axios": "^0.24.0",
     "cors": "^2.8.5",
     "date-fns": "^2.25.0",
-    "emulate-key-in-browser": "^1.0.0-rc.1",
     "express": "^4.17.1",
     "msnodesqlv8": "^2.4.2",
     "mssql": "^7.2.1",
@@ -28,6 +27,7 @@
     "react-tsparticles": "^1.37.3",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
+    "tedious": "^14.0.0",
     "tslib": "^2.3.1",
     "tsparticles": "^1.37.3"
   },

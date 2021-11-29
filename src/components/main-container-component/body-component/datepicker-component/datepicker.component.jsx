@@ -10,9 +10,9 @@ import Close from "@material-ui/icons/Close";
 
 import "./datepicker.component.scss";
 
-import { getEquipmentList } from "../../../../redux/app-reducer/app-reducer.actions";
+import { getEquipmentList, resetEquipmentList } from "../../../../redux/app-reducer/app-reducer.actions";
 
-const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
+const DatepickerComponent = ({data, getEquipmentList, appReducer, resetEquipmentList}) => {
   const DisableOrderInput = (newValue) => {
     const elementToChange = document.getElementById("combo-box-demo").parentElement.parentElement.parentElement;
     const datePickerElOne = document.getElementById("start_date")
@@ -22,6 +22,7 @@ const DatepickerComponent = ({data, getEquipmentList, appReducer}) => {
       elementToChange.style.display = "none"
     } else {
       if (!datePickerElOne.value && !datePickerElTwo.value) {
+        resetEquipmentList()
         elementToChange.style.display = "flex"
       }
     }
@@ -73,7 +74,8 @@ const mapStateToProps = (state, data) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEquipmentList: (request) => dispatch(getEquipmentList(request))
+    getEquipmentList: (request) => dispatch(getEquipmentList(request)),
+    resetEquipmentList: () => dispatch(resetEquipmentList())
   };
 };
 

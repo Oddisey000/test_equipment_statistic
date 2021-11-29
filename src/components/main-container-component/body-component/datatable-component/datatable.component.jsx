@@ -49,7 +49,7 @@ const DataTableComponent = ({ ...appReducer }) => {
     tableBodyHeight: "75vh",
     tableBodyMaxHeight: "",
     selectableRows: false,
-    //rowsPerPageOptions: [10, 50, 100, 500],
+    rowsPerPageOptions: [10, 50, 100],
     //onTableChange: (action, state) => {},
     textLabels: {
       body: {
@@ -85,7 +85,7 @@ const DataTableComponent = ({ ...appReducer }) => {
   return (
     <ThemeProvider theme={createTheme()}>
       <MUIDataTable
-        title={"ACME Employee list"}
+        title={"Статистика роботи тестового обладнання Mercedes Benz BR206"}
         data={data}
         columns={columns}
         options={options}
