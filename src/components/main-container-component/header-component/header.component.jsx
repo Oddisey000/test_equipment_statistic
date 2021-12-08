@@ -1,9 +1,11 @@
 import React from "react";
 import "./header.component.scss";
 
+import HelpIconButton from "./help-icon/help-icon.component";
+
 const HeaderComponent = () => {
   return (
-    <div id="app-header"></div>
+    <HelpIconButton />
   );
 };
 

@@ -41,7 +41,7 @@ const DataTableComponent = ({ ...appReducer }) => {
   const options = {
     search: true,
     download: true,
-    print: false,
+    print: true,
     viewColumns: true,
     filter: true,
     filterType: "dropdown",
@@ -49,7 +49,7 @@ const DataTableComponent = ({ ...appReducer }) => {
     tableBodyHeight: "75vh",
     tableBodyMaxHeight: "",
     selectableRows: false,
-    rowsPerPageOptions: [10, 50, 100],
+    rowsPerPageOptions: [10, 50, 100, 1000],
     //onTableChange: (action, state) => {},
     textLabels: {
       body: {
