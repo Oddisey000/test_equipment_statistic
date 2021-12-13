@@ -79,6 +79,11 @@ const DataTableComponent = ({ ...appReducer }) => {
         title: "Відобразити колонки",
         titleAria: "Відобразити/Приховати колонки",
       }
+    },
+    downloadOptions: {
+      filterOptions: {
+        useDisplayedColumnsOnly: true
+      }
     }
   };
 
