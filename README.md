@@ -2,9 +2,9 @@ This application was made for quick access to test equipment error statistics (e
 
 The application is made for automotive industry and actively used on Leoni AG in Kolomyia
 
-![Opex main image](https://files.fm/thumb_show.php?i=hdf7sm5h3)
+<img src="./screenshots/equipment-stats-data_picture_desc.jpg">
 
-![Opex main image](https://files.fm/thumb_show.php?i=5bza29xpu)
+<img src="./screenshots/equipment-stats-main_picture_desc.jpg">
 
 The code require compilation by using NodeJs 14
 
